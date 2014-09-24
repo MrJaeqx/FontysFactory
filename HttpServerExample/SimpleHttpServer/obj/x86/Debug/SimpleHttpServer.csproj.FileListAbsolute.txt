@@ -1,0 +1,5 @@
+C:\Users\wouter\Downloads\SimpleHttpServer-2013-03-23\SimpleHttpServer\bin\Debug\SimpleHttpServer.exe
+C:\Users\wouter\Downloads\SimpleHttpServer-2013-03-23\SimpleHttpServer\bin\Debug\SimpleHttpServer.pdb
+C:\Users\wouter\Downloads\SimpleHttpServer-2013-03-23\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.csprojResolveAssemblyReference.cache
+C:\Users\wouter\Downloads\SimpleHttpServer-2013-03-23\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.exe
+C:\Users\wouter\Downloads\SimpleHttpServer-2013-03-23\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.pdb

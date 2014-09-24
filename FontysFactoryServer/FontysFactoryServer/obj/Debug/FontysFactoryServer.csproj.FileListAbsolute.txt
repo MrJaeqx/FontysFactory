@@ -1,0 +1,8 @@
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\bin\Debug\FontysFactoryServer.exe.config
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\bin\Debug\FontysFactoryServer.exe
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\bin\Debug\FontysFactoryServer.pdb
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.csprojResolveAssemblyReference.cache
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.Properties.Resources.resources
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.csproj.GenerateResource.Cache
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.exe
+c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.pdb
