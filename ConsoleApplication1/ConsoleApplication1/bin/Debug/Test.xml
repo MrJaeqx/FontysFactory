@@ -1,0 +1,25 @@
+<newobject>
+	<threedobject>
+
+		<!-- Plain text -->
+		<title>Awsome object</title>
+		<subtitle>3d object test</subtitle>
+		<owner>Wouter</owner>
+		<manufacturer>Fontys</manufacturer>
+		<description>Really nice object</description>
+		<uploader>Lars</uploader>
+		<dimensions>100x100x100</dimensions>
+		<material>Wood</material>
+		<color>#47385f</color>
+
+		<!-- Comma seperated -->
+		<category></category>
+
+		<!-- With IDs -->
+		<age>2</age>
+		<weight>3</weight>
+		<shape>1</shape>
+		<texture>4</texture>
+		
+	</threedobject>
+</newobject>

@@ -6,3 +6,11 @@ c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\Fontys
 c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.csproj.GenerateResource.Cache
 c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.exe
 c:\users\wouter\documents\visual studio 2013\Projects\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.pdb
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\bin\Debug\FontysFactoryServer.exe.config
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.exe
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.pdb
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\bin\Debug\FontysFactoryServer.exe
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\bin\Debug\FontysFactoryServer.pdb
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.csprojResolveAssemblyReference.cache
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.Properties.Resources.resources
+C:\Users\OttkO\Documents\GitHub\FontysFactory\FontysFactoryServer\FontysFactoryServer\obj\Debug\FontysFactoryServer.csproj.GenerateResource.Cache
