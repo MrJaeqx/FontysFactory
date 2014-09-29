@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -228,9 +230,116 @@ namespace Bend.Util {
             string data = inputData.ReadToEnd();
             XmlDocument Doc = new XmlDocument();
             Doc.LoadXml(data);
-            XmlNodeList elemList = Doc.GetElementsByTagName("title");
-            Console.WriteLine(elemList[0].InnerXml);
+            XmlNodeList elemList = Doc.GetElementsByTagName("title");         
+            string titleData = elemList[0].InnerXml;
 
+            elemList = Doc.GetElementsByTagName("subtitle");
+            string subtitleData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("owner");
+            string ownerData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("Location");
+            string location = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("manufacturer");
+            string manufacturerData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("description");
+            string descriptionData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("dimensions");
+            string dimensionsData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("material");
+            string materialData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("color");
+            string colorData = elemList[0].InnerXml;
+
+            elemList = Doc.GetElementsByTagName("ageID");
+            int ageID = Convert.ToInt32(elemList[0].InnerXml);
+
+            elemList = Doc.GetElementsByTagName("uploaderID");
+            int uploaderID = Convert.ToInt32(elemList[0].InnerXml);
+
+            elemList = Doc.GetElementsByTagName("weightID");
+            int weightID = Convert.ToInt32(elemList[0].InnerXml);
+
+            elemList = Doc.GetElementsByTagName("shapeID");
+            int shapeID = Convert.ToInt32(elemList[0].InnerXml);
+
+            elemList = Doc.GetElementsByTagName("textureID");
+            int textureID = Convert.ToInt32(elemList[0].InnerXml);
+
+            elemList = Doc.GetElementsByTagName("categoryID");
+            int categoryID = Convert.ToInt32(elemList[0].InnerXml);
+
+
+
+            string connetionString = null;
+            SqlConnection cnn;
+            connetionString = "Data Source=localhost\\Crixus;Initial Catalog=Factory;Integrated Security=False;User ID=sa;Password=123321";
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                cnn.Open();
+                Console.WriteLine("Connection Open ! ");
+                using (SqlCommand cmd = new SqlCommand("dbo.3Dobject_Add", cnn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // set up the parameters
+                    cmd.Parameters.Add("@ModelID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Title", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@SubTitle", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@DateTimeO", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@Location", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Owner", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Manufacturer", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Description", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Quantity", SqlDbType.Int);
+                    cmd.Parameters.Add("@Dimensions", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Material", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Color", SqlDbType.VarChar, -1);
+                    cmd.Parameters.Add("@Category_ID", SqlDbType.Int);
+                    cmd.Parameters.Add("@Uploader_ID", SqlDbType.Int);
+                    cmd.Parameters.Add("@Texture_ID", SqlDbType.Int);
+                    cmd.Parameters.Add("@Age_ID", SqlDbType.Int);
+                    cmd.Parameters.Add("@Weight_ID", SqlDbType.Int);
+                    cmd.Parameters.Add("@ShapeID", SqlDbType.Int);
+
+                    cmd.Parameters["@Title"].Value = titleData;
+                    cmd.Parameters["@SubTitle"].Value = subtitleData;
+                    cmd.Parameters["@DateTimeO"].Value = DateTime.Now;
+                    cmd.Parameters["@Location"].Value = location;
+                    cmd.Parameters["@Owner"].Value = ownerData;
+                    cmd.Parameters["@Manufacturer"].Value = manufacturerData;
+                    cmd.Parameters["@Description"].Value = descriptionData;
+                    cmd.Parameters["@Quantity"].Value = 5;  
+                    cmd.Parameters["@Dimensions"].Value = dimensionsData;
+                    cmd.Parameters["@Material"].Value = materialData;
+                    cmd.Parameters["@Color"].Value = colorData;
+                    cmd.Parameters["@Category_ID"].Value = categoryID;
+                    cmd.Parameters["@Uploader_ID"].Value = uploaderID;
+                    cmd.Parameters["@Texture_ID"].Value = textureID;
+                    cmd.Parameters["@Age_ID"].Value = ageID;
+                    cmd.Parameters["@Weight_ID"].Value = weightID;
+                    cmd.Parameters["@ShapeID"].Value = shapeID;
+
+                    cmd.ExecuteNonQuery();
+                    int contractID = Convert.ToInt32(cmd.Parameters["@ModelID"].Value);
+                    Console.WriteLine("Insert executed successfully " + contractID.ToString());
+
+                    // open connection and execute stored procedure
+                    cnn.Close();
+                }
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             p.writeSuccess();
             //p.outputStream.WriteLine("<html><body><h1>test server</h1>");

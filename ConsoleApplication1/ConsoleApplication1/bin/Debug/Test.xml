@@ -4,22 +4,22 @@
 		<!-- Plain text -->
 		<title>Awsome object</title>
 		<subtitle>3d object test</subtitle>
+		<Location>Brazil</Location>
 		<owner>Wouter</owner>
 		<manufacturer>Fontys</manufacturer>
 		<description>Really nice object</description>
-		<uploader>Lars</uploader>
 		<dimensions>100x100x100</dimensions>
 		<material>Wood</material>
 		<color>#47385f</color>
 
 		<!-- Comma seperated -->
-		<category></category>
+		<categoryID>1</categoryID>
 
 		<!-- With IDs -->
-		<age>2</age>
-		<weight>3</weight>
-		<shape>1</shape>
-		<texture>4</texture>
-		
+		<uploaderID>1</uploaderID>
+		<ageID>1</ageID>
+		<weightID>1</weightID>
+		<shapeID>1</shapeID>
+		<textureID>1</textureID>
 	</threedobject>
 </newobject>
