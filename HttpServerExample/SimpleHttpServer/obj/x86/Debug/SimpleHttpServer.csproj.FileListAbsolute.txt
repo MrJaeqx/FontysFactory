@@ -8,3 +8,8 @@ C:\Users\OttkO\Documents\GitHub\FontysFactory\HttpServerExample\SimpleHttpServer
 C:\Users\OttkO\Documents\GitHub\FontysFactory\HttpServerExample\SimpleHttpServer\bin\Debug\SimpleHttpServer.exe
 C:\Users\OttkO\Documents\GitHub\FontysFactory\HttpServerExample\SimpleHttpServer\bin\Debug\SimpleHttpServer.pdb
 C:\Users\OttkO\Documents\GitHub\FontysFactory\HttpServerExample\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.csprojResolveAssemblyReference.cache
+C:\Users\OttkO\Desktop\HttpServerExample\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.exe
+C:\Users\OttkO\Desktop\HttpServerExample\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.pdb
+C:\Users\OttkO\Desktop\HttpServerExample\SimpleHttpServer\bin\Debug\SimpleHttpServer.exe
+C:\Users\OttkO\Desktop\HttpServerExample\SimpleHttpServer\bin\Debug\SimpleHttpServer.pdb
+C:\Users\OttkO\Desktop\HttpServerExample\SimpleHttpServer\obj\x86\Debug\SimpleHttpServer.csprojResolveAssemblyReference.cache

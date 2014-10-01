@@ -23,6 +23,7 @@ namespace Examples.System.Net
             request.ContentType = "application/x-www-form-urlencoded";
             // Set the ContentLength property of the WebRequest.
             request.ContentLength = byteArray.Length;
+            
             // Get the request stream.
             Stream dataStream = request.GetRequestStream();
             // Write the data to the request stream.

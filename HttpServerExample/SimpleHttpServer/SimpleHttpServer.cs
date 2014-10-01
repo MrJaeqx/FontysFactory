@@ -230,7 +230,7 @@ namespace Bend.Util {
             string data = inputData.ReadToEnd();
             XmlDocument Doc = new XmlDocument();
             Doc.LoadXml(data);
-            XmlNodeList elemList = Doc.GetElementsByTagName("title");         
+            XmlNodeList elemList = Doc.GetElementsByTagName("title");
             string titleData = elemList[0].InnerXml;
 
             elemList = Doc.GetElementsByTagName("subtitle");
@@ -276,10 +276,10 @@ namespace Bend.Util {
             int categoryID = Convert.ToInt32(elemList[0].InnerXml);
 
 
-
+            string type = "OtherObject";
             string connetionString = null;
             SqlConnection cnn;
-            connetionString = "Data Source=localhost\\Crixus;Initial Catalog=Factory;Integrated Security=False;User ID=sa;Password=123321";
+            connetionString = "Data Source=192.168.35.244;Initial Catalog=ddwdb;Integrated Security=False;User ID=HttpServer;Password=Welkom01";
             cnn = new SqlConnection(connetionString);
             try
             {
@@ -316,7 +316,7 @@ namespace Bend.Util {
                     cmd.Parameters["@Owner"].Value = ownerData;
                     cmd.Parameters["@Manufacturer"].Value = manufacturerData;
                     cmd.Parameters["@Description"].Value = descriptionData;
-                    cmd.Parameters["@Quantity"].Value = 5;  
+                    cmd.Parameters["@Quantity"].Value = 5;
                     cmd.Parameters["@Dimensions"].Value = dimensionsData;
                     cmd.Parameters["@Material"].Value = materialData;
                     cmd.Parameters["@Color"].Value = colorData;
@@ -328,24 +328,37 @@ namespace Bend.Util {
                     cmd.Parameters["@ShapeID"].Value = shapeID;
 
                     cmd.ExecuteNonQuery();
-                    int contractID = Convert.ToInt32(cmd.Parameters["@ModelID"].Value);
-                    Console.WriteLine("Insert executed successfully " + contractID.ToString());
+                    int idFromServer = Convert.ToInt32(cmd.Parameters["@ModelID"].Value);
+                    Console.WriteLine("Insert executed successfully " + idFromServer.ToString());
 
                     // open connection and execute stored procedure
                     cnn.Close();
+                    string activeDir;
+                    if (type == "OtherObject")
+                    {
+                        activeDir = @"D:\FontysFactory\OtherObjects";
+                        string newPath = System.IO.Path.Combine(activeDir, Convert.ToString(idFromServer));
+                        System.IO.Directory.CreateDirectory(newPath);
+                        string path = activeDir;
+                        string folder1 = path.Substring(path.LastIndexOf("\\") + 1);
+                        path = path.Remove(path.LastIndexOf("\\"));
+                        string folder2 = path.Substring(path.LastIndexOf("\\") + 1);
+                        string result = System.IO.Path.Combine(folder2, idFromServer.ToString());
+                        Console.WriteLine(result);
+                        p.writeSuccess();
+                        p.outputStream.Write(result);
+
+                    }
+
                 }
                 cnn.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                p.writeFailure();
             }
 
-            p.writeSuccess();
-            //p.outputStream.WriteLine("<html><body><h1>test server</h1>");
-            //p.outputStream.WriteLine("<a href=/test>return</a><p>");
-            //p.outputStream.WriteLine("postbody: <pre>{0}</pre>", data);
-            p.outputStream.WriteLine("Accept");
             
 
         }
