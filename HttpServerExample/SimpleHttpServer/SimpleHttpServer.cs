@@ -248,35 +248,21 @@ namespace Bend.Util {
             elemList = Doc.GetElementsByTagName("description");
             string descriptionData = elemList[0].InnerXml;
 
-            elemList = Doc.GetElementsByTagName("dimensions");
-            string dimensionsData = elemList[0].InnerXml;
-
-            elemList = Doc.GetElementsByTagName("material");
-            string materialData = elemList[0].InnerXml;
-
-            elemList = Doc.GetElementsByTagName("color");
-            string colorData = elemList[0].InnerXml;
+            
 
             elemList = Doc.GetElementsByTagName("ageID");
             int ageID = Convert.ToInt32(elemList[0].InnerXml);
 
+
+
+
             elemList = Doc.GetElementsByTagName("uploaderID");
             int uploaderID = Convert.ToInt32(elemList[0].InnerXml);
-
-            elemList = Doc.GetElementsByTagName("weightID");
-            int weightID = Convert.ToInt32(elemList[0].InnerXml);
-
-            elemList = Doc.GetElementsByTagName("shapeID");
-            int shapeID = Convert.ToInt32(elemList[0].InnerXml);
-
-            elemList = Doc.GetElementsByTagName("textureID");
-            int textureID = Convert.ToInt32(elemList[0].InnerXml);
-
             elemList = Doc.GetElementsByTagName("categoryID");
             int categoryID = Convert.ToInt32(elemList[0].InnerXml);
 
-
-            string type = "OtherObject";
+            string activeDir;
+            string type = "threedobject";
             string connetionString = null;
             SqlConnection cnn;
             connetionString = "Data Source=192.168.35.244;Initial Catalog=ddwdb;Integrated Security=False;User ID=HttpServer;Password=Welkom01";
@@ -285,57 +271,136 @@ namespace Bend.Util {
             {
                 cnn.Open();
                 Console.WriteLine("Connection Open ! ");
-                using (SqlCommand cmd = new SqlCommand("dbo.3Dobject_Add", cnn))
+                if (type == "threedobject")
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    elemList = Doc.GetElementsByTagName("dimensions");
+                    string dimensionsData = elemList[0].InnerXml;
 
-                    // set up the parameters
-                    cmd.Parameters.Add("@ModelID", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("@Title", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@SubTitle", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@DateTimeO", SqlDbType.DateTime);
-                    cmd.Parameters.Add("@Location", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Owner", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Manufacturer", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Description", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Quantity", SqlDbType.Int);
-                    cmd.Parameters.Add("@Dimensions", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Material", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Color", SqlDbType.VarChar, -1);
-                    cmd.Parameters.Add("@Category_ID", SqlDbType.Int);
-                    cmd.Parameters.Add("@Uploader_ID", SqlDbType.Int);
-                    cmd.Parameters.Add("@Texture_ID", SqlDbType.Int);
-                    cmd.Parameters.Add("@Age_ID", SqlDbType.Int);
-                    cmd.Parameters.Add("@Weight_ID", SqlDbType.Int);
-                    cmd.Parameters.Add("@ShapeID", SqlDbType.Int);
+                    elemList = Doc.GetElementsByTagName("material");
+                    string materialData = elemList[0].InnerXml;
 
-                    cmd.Parameters["@Title"].Value = titleData;
-                    cmd.Parameters["@SubTitle"].Value = subtitleData;
-                    cmd.Parameters["@DateTimeO"].Value = DateTime.Now;
-                    cmd.Parameters["@Location"].Value = location;
-                    cmd.Parameters["@Owner"].Value = ownerData;
-                    cmd.Parameters["@Manufacturer"].Value = manufacturerData;
-                    cmd.Parameters["@Description"].Value = descriptionData;
-                    cmd.Parameters["@Quantity"].Value = 5;
-                    cmd.Parameters["@Dimensions"].Value = dimensionsData;
-                    cmd.Parameters["@Material"].Value = materialData;
-                    cmd.Parameters["@Color"].Value = colorData;
-                    cmd.Parameters["@Category_ID"].Value = categoryID;
-                    cmd.Parameters["@Uploader_ID"].Value = uploaderID;
-                    cmd.Parameters["@Texture_ID"].Value = textureID;
-                    cmd.Parameters["@Age_ID"].Value = ageID;
-                    cmd.Parameters["@Weight_ID"].Value = weightID;
-                    cmd.Parameters["@ShapeID"].Value = shapeID;
+                    elemList = Doc.GetElementsByTagName("textureID");
+                    int textureID = Convert.ToInt32(elemList[0].InnerXml);
 
-                    cmd.ExecuteNonQuery();
-                    int idFromServer = Convert.ToInt32(cmd.Parameters["@ModelID"].Value);
-                    Console.WriteLine("Insert executed successfully " + idFromServer.ToString());
 
-                    // open connection and execute stored procedure
-                    cnn.Close();
-                    string activeDir;
-                    if (type == "OtherObject")
+                    elemList = Doc.GetElementsByTagName("weightID");
+                    int weightID = Convert.ToInt32(elemList[0].InnerXml);
+
+                    elemList = Doc.GetElementsByTagName("shapeID");
+                    int shapeID = Convert.ToInt32(elemList[0].InnerXml);
+
+                    elemList = Doc.GetElementsByTagName("color");
+                    string colorData = elemList[0].InnerXml;
+                    using (SqlCommand cmd = new SqlCommand("dbo.3Dobject_Add", cnn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // set up the parameters
+                        cmd.Parameters.Add("@ModelID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@Title", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@SubTitle", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@DateTimeO", SqlDbType.DateTime);
+                        cmd.Parameters.Add("@Location", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Owner", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Manufacturer", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Description", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Quantity", SqlDbType.Int);
+                        cmd.Parameters.Add("@Dimensions", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Material", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Color", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Category_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@Uploader_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@Texture_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@Age_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@Weight_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@ShapeID", SqlDbType.Int);
+
+                        cmd.Parameters["@Title"].Value = titleData;
+                        cmd.Parameters["@SubTitle"].Value = subtitleData;
+                        cmd.Parameters["@DateTimeO"].Value = DateTime.Now;
+                        cmd.Parameters["@Location"].Value = location;
+                        cmd.Parameters["@Owner"].Value = ownerData;
+                        cmd.Parameters["@Manufacturer"].Value = manufacturerData;
+                        cmd.Parameters["@Description"].Value = descriptionData;
+                        cmd.Parameters["@Quantity"].Value = 5;
+                        cmd.Parameters["@Dimensions"].Value = dimensionsData;
+                        cmd.Parameters["@Material"].Value = materialData;
+                        cmd.Parameters["@Color"].Value = colorData;
+                        cmd.Parameters["@Category_ID"].Value = categoryID;
+                        cmd.Parameters["@Uploader_ID"].Value = uploaderID;
+                        cmd.Parameters["@Texture_ID"].Value = textureID;
+                        cmd.Parameters["@Age_ID"].Value = ageID;
+                        cmd.Parameters["@Weight_ID"].Value = weightID;
+                        cmd.Parameters["@ShapeID"].Value = shapeID;
+
+                        cmd.ExecuteNonQuery();
+                        int idFromServer = Convert.ToInt32(cmd.Parameters["@ModelID"].Value);
+                        Console.WriteLine("Insert executed successfully " + idFromServer.ToString());
+
+                        // open connection and execute stored procedure
+                        cnn.Close();
+
+
+                            activeDir = @"D:\FontysFactory\3DObjects";
+                            string newPath = System.IO.Path.Combine(activeDir, Convert.ToString(idFromServer));
+                            System.IO.Directory.CreateDirectory(newPath);
+                            string path = activeDir;
+                            string folder1 = path.Substring(path.LastIndexOf("\\") + 1);
+                            path = path.Remove(path.LastIndexOf("\\"));
+                            string folder2 = path.Substring(path.LastIndexOf("\\") + 1);
+                            string result = System.IO.Path.Combine(folder2, idFromServer.ToString());
+                            Console.WriteLine(result);
+                            p.writeSuccess();
+                            p.outputStream.WriteLine(result);
+
+                    }
+                }
+                else
+                {
+                    elemList = Doc.GetElementsByTagName("extension");
+                    string extension = elemList[0].InnerXml;
+                    using (SqlCommand cmd = new SqlCommand("dbo.OtherObject_Add", cnn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // set up the parameters
+                        cmd.Parameters.Add("@ObjectID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@Title", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@SubTitle", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@DateTimeO", SqlDbType.DateTime);
+                        cmd.Parameters.Add("@Location", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Owner", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Manufacturer", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Description", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Quantity", SqlDbType.Int);
+                        cmd.Parameters.Add("@Extension", SqlDbType.VarChar, -1);
+                        cmd.Parameters.Add("@Age_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@Category_ID", SqlDbType.Int);
+                        cmd.Parameters.Add("@Uploader_ID", SqlDbType.Int);
+
+
+                        cmd.Parameters["@Title"].Value = titleData;
+                        cmd.Parameters["@SubTitle"].Value = subtitleData;
+                        cmd.Parameters["@DateTimeO"].Value = DateTime.Now;
+                        cmd.Parameters["@Location"].Value = location;
+                        cmd.Parameters["@Owner"].Value = ownerData;
+                        cmd.Parameters["@Manufacturer"].Value = manufacturerData;
+                        cmd.Parameters["@Description"].Value = descriptionData;
+                        cmd.Parameters["@Quantity"].Value = 5;
+                        cmd.Parameters["@Extension"].Value = extension;
+                        cmd.Parameters["@Age_ID"].Value = ageID;
+                        cmd.Parameters["@Category_ID"].Value = categoryID;
+                        cmd.Parameters["@Uploader_ID"].Value = uploaderID;
+
+
+                        cmd.ExecuteNonQuery();
+                        int idFromServer = Convert.ToInt32(cmd.Parameters["@ObjectID"].Value);
+                        Console.WriteLine("Insert executed successfully " + idFromServer.ToString());
+
+                        // open connection and execute stored procedure
+                        cnn.Close();
+
+
                         activeDir = @"D:\FontysFactory\OtherObjects";
                         string newPath = System.IO.Path.Combine(activeDir, Convert.ToString(idFromServer));
                         System.IO.Directory.CreateDirectory(newPath);
@@ -343,13 +408,11 @@ namespace Bend.Util {
                         string folder1 = path.Substring(path.LastIndexOf("\\") + 1);
                         path = path.Remove(path.LastIndexOf("\\"));
                         string folder2 = path.Substring(path.LastIndexOf("\\") + 1);
-                        string result = System.IO.Path.Combine(folder2, idFromServer.ToString());
+                        string result = System.IO.Path.Combine(folder1, idFromServer.ToString());
                         Console.WriteLine(result);
                         p.writeSuccess();
-                        p.outputStream.Write(result);
-
+                        p.outputStream.WriteLine(result);
                     }
-
                 }
                 cnn.Close();
             }
@@ -358,7 +421,7 @@ namespace Bend.Util {
                 Console.WriteLine(ex.Message);
                 p.writeFailure();
             }
-
+        
             
 
         }
